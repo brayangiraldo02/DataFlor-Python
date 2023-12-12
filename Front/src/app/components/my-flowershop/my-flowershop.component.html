@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<div class="mainContainer">
+  <div>
+    <h2>Mi Floristería</h2>
+  </div>
+
+  <table>
+      <tr>
+          <td>Nombre</td>
+          <td *ngIf="!inEditMode">{{ flowershopData.fullname }}</td>
+          <td *ngIf="inEditMode"><input [(ngModel)]="flowershopData.fullname" type="text"></td>
+
+      </tr>
+      <tr>
+          <td>Dirección</td>
+          <td *ngIf="!inEditMode">{{ flowershopData.address }}</td>
+          <td *ngIf="inEditMode"><input [(ngModel)]="flowershopData.address" type="text"></td>
+      </tr>
+      <tr>
+          <td>Teléfono</td>
+          <td *ngIf="!inEditMode">{{ flowershopData.phone }}</td>
+          <td *ngIf="inEditMode"><input [(ngModel)]="flowershopData.phone" type="text"></td>
+          
+      </tr>
+      <tr>
+          <td>Estado</td>
+          <td *ngIf="!inEditMode">{{ flowershopData.state }}</td>
+          <td *ngIf="inEditMode"><input [(ngModel)]="flowershopData.state" type="text"></td>
+      </tr>
+  </table>
+
+  <div class="buttons">
+    <button *ngIf="!inEditMode" (click)="enterEditMode()">Editar</button>
+    <button *ngIf="inEditMode" (click)="updateFlowershop()">Enviar</button>
+    <button (click)="navigateTo('/owner')">Volver</button>
+</div>

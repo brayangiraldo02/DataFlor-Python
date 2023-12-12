@@ -1,0 +1,32 @@
+<app-nav></app-nav>
+<div class="create-product">
+  <h2>Crear producto</h2>
+  <form (ngSubmit)="createProduct()" [formGroup]="productForm">
+    <div>
+      <label for="productname">Nombre:</label>
+      <input id="productname" formControlName="productname" />
+      <div *ngIf="productForm.get('productname')?.hasError('required')">
+        Nombre es obligatorio.
+      </div>
+      <div *ngIf="productForm.get('productname')?.hasError('pattern')">
+        Nombre solo debe contener letras y espacios.
+      </div>
+    </div>
+    <div>
+      <label for="price">Precio:</label>
+      <input id="price" formControlName="price" />
+      <div *ngIf="productForm.get('price')?.hasError('required')">
+        Precio es obligatoria.
+      </div>
+      <div *ngIf="productForm.get('price')?.hasError('pattern')">
+        Precio solo debe contener números.
+      </div>
+    </div>
+    <div>
+      <label for="description">Descripción:</label>
+      <input id="description" formControlName="description" />
+    </div>
+    <button type="submit">Crear producto</button>
+    <button routerLink="/products">Volver</button>
+  </form>
+</div>

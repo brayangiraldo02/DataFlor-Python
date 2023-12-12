@@ -1,0 +1,56 @@
+<header>
+  <!-- Se define un navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <!-- Se define un logo -->
+      <a class="navbar-logo" href="/"><img [src]="logo"></a>
+    </div>
+    <div class="navbar-links">
+      <!-- Botón con su evento para mostrar el menu responsive -->
+      <!-- Se define el botón para mostrar el menú responsive -->
+      <button href="" class="menu-button" (click)="toggleNavbar()">☰</button>
+      <!-- Se define el listado del menu -->
+      <ul [ngClass]="{ 'show': showNavbar }">
+        <!-- Se muestra un mensaje de bienvenida con el nombre de usuario -->
+        <li class="welcome">Bienvenido {{username}}</li>
+        <!-- Se define una vista para la vista del admin -->
+        <li><a href="admin" *ngIf="isLoggedIn && isLoggedInAdmin">
+            <span class="material-symbols-outlined">
+              inventory
+            </span>
+            Panel de admin
+          </a></li>
+        <!-- Se define un enlace para la vista del dueño -->
+        <li><a href="owner" *ngIf="isLoggedIn && isLoggedInOwner">
+          <span class="material-symbols-outlined">
+            supervisor_account
+            </span>
+            Panel de dueño
+        </a></li>
+        <li><a href="my-inventories" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            local_florist
+            </span>
+            Inventario
+        </a></li>
+        <!-- <li><a href="sales" *ngIf="isLoggedIn && isLoggedInEmployee">
+          <span class="material-symbols-outlined">
+            shopping_cart
+            </span>
+            Ventas
+        </a></li> -->
+        <!-- Se define un enlace para iniciar sesión -->
+        <li><a href="login" *ngIf="!isLoggedIn">
+            Iniciar Sesion
+          </a></li>
+        <!-- Se define un enlace para cerrar sesión --> 
+        <li><a href="" (click)="logoutPress()" *ngIf="isLoggedIn">
+            <span class="material-symbols-outlined">
+              logout
+            </span>
+            Cerrar Sesion
+          </a></li>
+      </ul>
+    </div>
+  </nav>
+</header>

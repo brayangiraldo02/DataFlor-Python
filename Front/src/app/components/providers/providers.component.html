@@ -1,0 +1,74 @@
+<app-nav></app-nav>
+<div class="container">
+  <h2>Lista de Proveedores</h2>
+  <button routerLink="/provider/create">Agregar Proveedor</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Address</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let provider of providers">
+        <td>{{ provider.providerid }}</td>
+        <td>{{ provider.fullname }}</td>
+        <td>{{ provider.phone }}</td>
+        <td>{{ provider.address }}</td>
+        <td>{{ provider.state == 'Activate' ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <button (click)="editProvider(provider)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isEditing">
+    <h3>Editar Proveedor</h3>
+    <form (submit)="saveChanges()" [formGroup]="providerForm">
+      <div class="form-group">
+        <label for="fullname">Nombre:</label>
+        <input type="text" id="fullname" formControlName="fullname" />
+        <div *ngIf="providerForm.get('fullname')?.hasError('required')">
+          Nombre es obligatorio.
+        </div>
+        <div *ngIf="providerForm.get('fullname')?.hasError('pattern')">
+          Nombre solo debe contener letras.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Dirección:</label>
+        <input type text="id" id="address" formControlName="address" />
+        <div *ngIf="providerForm.get('address')?.hasError('required')">
+          Dirección es obligatoria.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono:</label>
+        <input type="text" id="phone" formControlName="phone" />
+        <div *ngIf="providerForm.get('phone')?.hasError('required')">
+          Teléfono es obligatorio.
+        </div>
+        <div *ngIf="providerForm.get('phone')?.hasError('pattern')">
+          Teléfono solo debe contener números.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">Estado:</label>
+        <select id="state" formControlName="state">
+          <option value="Activate">Activo</option>
+          <option value="Inactive">Inactivo</option>
+        </select>
+        <div *ngIf="providerForm.get('state')?.hasError('required')">
+          Estado es obligatorio.
+        </div>
+      </div>
+      <button type="submit">Guardar Cambios</button>
+      <button (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>  
+</div>

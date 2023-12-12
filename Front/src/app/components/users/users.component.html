@@ -1,0 +1,68 @@
+<app-nav></app-nav>
+<div class="container">
+  <h2>Lista de usuarios</h2>
+  <button routerLink="/user/create">Agregar usuario</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Rol</th>
+        <th>ID floristería</th>
+        <th>¿Está activo?</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userid }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.fullname }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.idflowershops }}</td>
+        <td>{{ user.state }}</td>
+        <td>
+          <button (click)="editUser(user)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="editingUser">
+  <h3>Editar Usuario</h3>
+  <form (submit)="updateUser()" [formGroup]="userForm">
+    <div class="form-group">
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" formControlName="username" />
+      <div *ngIf="userForm.get('username')?.hasError('required')">
+        Usuario es obligatorio.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Teléfono:</label>
+      <input type="text" id="phone" formControlName="phone" />
+      <div *ngIf="userForm.get('phone')?.hasError('required')">
+        Teléfono es obligatorio.
+      </div>
+      <div *ngIf="userForm.get('phone')?.hasError('pattern')">
+        Teléfono solo debe contener números.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="state">Estado:</label>
+      <select id="state" formControlName="state">
+        <option value="Activate">Activo</option>
+        <option value="Inactive">Inactivo</option>
+      </select>
+      <div *ngIf="userForm.get('state')?.hasError('required')">
+        Estado es obligatorio.
+      </div>
+    </div>
+    <button type="submit">Guardar Cambios</button>
+    <button (click)="cancelEdit()">Cancelar</button>
+  </form>
+</div>

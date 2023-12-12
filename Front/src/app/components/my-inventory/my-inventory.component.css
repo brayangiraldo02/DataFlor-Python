@@ -1,0 +1,90 @@
+* {
+  color: white;
+}
+
+h2{
+  color: white;
+  text-align: center;
+  margin: 20px;
+}
+body {
+  background-color: #09020F;
+  color: white; /* Texto en color blanco */
+}
+
+/* Estilo para el contenedor principal del componente */
+div {
+  color: rgb(204, 20, 173);
+  margin: 20px;
+  padding: 20px;
+  /* border: 2px solid rgb(238, 6, 229); */
+}
+
+form {
+  margin: 0;
+
+}
+
+/* Estilo para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td input {
+  padding: 5px; /* Ajusta el relleno de los inputs */
+  text-align: left;
+  width: 100%; /* Ocupa todo el ancho de la celda */
+  color: white; /* Color de texto blanco */
+}
+
+/* Estilo para las filas de la tabla */
+tr {
+  border-bottom: 2px solid rgb(146, 14, 124);
+  color: white;
+  text-align: center;
+}
+
+/* Estilo para las celdas de la tabla */
+td, th {
+  padding: 10px;
+  text-align: left;
+}
+
+.mainContainer{
+  color:white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.buttons{
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+  background-color: rgb(207, 20, 176);
+  color: white;
+  transition: background-color 0.3s;
+  width: 98%;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(207, 20, 176);
+  padding: 10px;
+  margin: 10px;
+
+}
+
+button:hover {
+  background-color: rgb(146, 14, 124);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  background-color: rgb(207, 20, 176);
+  border: 1px solid rgb(207, 20, 176);
+}

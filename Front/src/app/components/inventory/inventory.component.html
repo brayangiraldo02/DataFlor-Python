@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+<div class="container">
+  <h2>Lista de inventarios</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Floristería</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unidad</th>
+        <th>Precio total</th>
+        <th>Proveedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inventory of inventorys">
+        <td>{{ inventory.inventoryid }}</td> <!-- Mostrar el id del inventario -->
+        <td>{{ inventory.flowerShopName }}</td> <!-- Mostrar el nombre de la floristería -->
+        <td>{{ inventory.productName }}</td> <!-- Mostrar el nombre del producto -->
+        <td>{{ inventory.quantity }}</td> <!-- Mostrar la cantidad del producto -->
+        <td>{{ inventory.priceProduct }}</td> <!-- Mostrar el precio del producto -->
+        <td>{{ inventory.priceQuantity }}</td> <!-- Mostrar el precio total del producto -->
+        <td>{{ inventory.providerName }}</td> <!-- Mostrar el nombre del proveedor -->
+      </tr>
+    </tbody>    
+  </table>
+</div>

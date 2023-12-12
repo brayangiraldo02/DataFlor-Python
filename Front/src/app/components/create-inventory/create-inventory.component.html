@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<div class="create-product">
+  <h2>Crear inventario</h2>
+  <form (ngSubmit)="createProduct()" [formGroup]="inventoryForm">
+    <div>
+      <label for="productname">Producto:</label>
+      <select id="productid" formControlName="productid">
+        <option *ngFor="let product of products" [value]="product.productid">{{ product.productname }}</option>
+      </select>
+      <div *ngIf="inventoryForm.get('productid')?.hasError('required')">
+        Producto es obligatorio.
+      </div>
+    </div>
+    <div>
+      <label for="quantity">Cantidad:</label>
+      <input id="quantity" formControlName="quantity" />
+      <div *ngIf="inventoryForm.get('quantity')?.hasError('required')">
+        Cantidad es obligatorio.
+      </div>
+      <div *ngIf="inventoryForm.get('quantity')?.hasError('pattern')">
+        Cantidad solo debe contener números.
+      </div>
+    </div>
+    <div>
+      <label for="fullname">Provedor:</label>
+      <select id="providerid" formControlName="providerid">
+        <option *ngFor="let provider of providers" [value]="provider.providerid">{{ provider.fullname }}</option>
+      </select>
+      <div *ngIf="inventoryForm.get('providerid')?.hasError('required')">
+        Proveedor es obligatorio.
+      </div>
+    </div>
+    <button type="submit">Crear inventario</button>
+    <button routerLink="/my-inventories">Volver</button>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+
+
+h1{
+    color: rgb(238, 6, 229);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 100px 0 0 0;
+    margin-bottom: 50px; 
+    size: 50px;
+}
+
+.button {
+    display: block; /* Asegura que el botón ocupe todo el ancho del contenedor */
+    margin: 0 auto; /* Lo centra horizontalmente dentro del contenedor */
+    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
+    color: pink; /* Color del texto (blanco en este caso) */
+    background-color: rgb(207, 20, 176);
+    border: none; /* Elimina el borde del botón */
+    border-radius: 8px; /* Añade esquinas redondeadas */
+    text-align: center; /* Centra el texto dentro del botón */
+    font-size: 16px; /* Tamaño de fuente */
+    text-decoration: none; /* Elimina cualquier subrayado del texto */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el botón */
+    border: 2px solid whitesmoke; /* Añade un borde al botón */
+    margin-bottom: 50px; 
+}
+.button:hover{
+    background-color: rgb(146, 14, 124);
+    color: white;
+}

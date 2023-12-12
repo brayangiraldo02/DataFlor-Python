@@ -1,0 +1,46 @@
+
+h2 {
+  color: white;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  
+}
+.form-group {
+  margin-bottom: 20px; /* Espacio entre grupos de campos */
+  
+}
+
+label {
+  color: white; /* Color del texto de las etiquetas */
+}
+
+input, select {
+  color: white;
+  width: 70%; /* Ancho del campo al 100% del contenedor */
+  padding: 10px; /* Espaciado interno */
+  border: 2px solid #ff69b4; /* Borde rosa */
+  border-radius: 5px; /* Borde redondeado */
+  box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total */
+  margin: 5px; /* Espacio entre campos */
+}
+
+button {
+  padding: 10px 20px; /* Espaciado del botón */
+  border: 2px solid #ff69b4; /* Borde rosa */
+  border-radius: 5px; /* Borde redondeado */
+  background-color: #ff1493; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin-right: 10px;/* Espacio entre botones */
+  margin-left: 10px;
+
+}
+
+div {
+  color: rgb(204, 20, 173);
+}
+
+button:hover {
+  background-color: rgb(238, 6, 229); /* Cambia el color de fondo al pasar sobre el botón */
+}

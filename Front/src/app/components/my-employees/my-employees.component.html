@@ -1,0 +1,29 @@
+<app-nav></app-nav>
+<div class="mainContainer">
+  <h2>Lista de empleados</h2>
+
+  <table>
+    <tr>
+      <th>Nombre de Usuario</th>
+      <th>Nombre Completo</th>
+      <th>Teléfono</th>
+      <th>Rol</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let user of users; let i = index" >
+      <td *ngIf="i > 0 && inEditModeIndex !== i">{{ user.username }}</td>
+      <td *ngIf="i > 0 && inEditModeIndex === i"><input [(ngModel)]="user.username" type="text"></td>
+      <td *ngIf="i > 0 ">{{ user.fullname }}</td>
+      <td *ngIf="i > 0 && inEditModeIndex !== i">{{ user.phone }}</td>
+      <td *ngIf="i > 0 && inEditModeIndex === i"><input [(ngModel)]="user.phone" type="text"></td>
+      <td *ngIf="i > 0 ">{{ user.role }}</td>
+      <td *ngIf="i > 0 && inEditModeIndex !== i">{{ user.state }}</td>
+      <td *ngIf="i > 0 && inEditModeIndex === i"><input [(ngModel)]="user.state" type="text"></td>
+      <td>
+        <button *ngIf="i > 0 && inEditModeIndex !== i" (click)="enterEditMode(i)">Editar</button>
+        <button *ngIf="i > 0 && inEditModeIndex === i" (click)="editUser(user.userid, i)">Actualizar</button>
+      </td>
+    </tr>
+  </table>
+</div>
