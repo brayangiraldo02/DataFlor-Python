@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from config.database import engine, Base
+
 from models.flowershops import FlowerShop
 from models.providers import Provider
 from models.products import Product
