@@ -33,14 +33,14 @@ Base.metadata.create_all(bind=engine)
 def message():
 	return JSONResponse(content={ 
 		"Welcome_message": "Welcome to the DataFlor backend!",
-		"flowerShops": {
-			"allFlowerShops": "GET /flower-shops (LISTO)",
-			"flowerShopById": "GET /flower-shops/:id (LISTO)",
-			"flowerShopByName": "GET /flower-shops/name/:name (LISTO)",
-			"flowerShopByAddress": "GET /flower-shops/address/:address (LISTO)",
-			"flowerShopByPhone": "GET /flower-shops/phone/:phone (LISTO)",
-			"flowerShopByState": "GET /flower-shops/state/:state (LISTO)",
-			"createFlowerShop": "POST /flower-shops/create (LISTO)",
+		"flowerShops (LISTO)": {
+			"allFlowerShops": "GET /flower-shops",
+			"flowerShopById": "GET /flower-shops/:id",
+			"flowerShopByName": "GET /flower-shops/name/:name",
+			"flowerShopByAddress": "GET /flower-shops/address/:address",
+			"flowerShopByPhone": "GET /flower-shops/phone/:phone",
+			"flowerShopByState": "GET /flower-shops/state/:state",
+			"createFlowerShop": "POST /flower-shops/create",
 			"updateFlowerShopById": "PUT /flower-shops/update/id/:id",
 			"updateFlowerShopByFullname": "PUT /flower-shops/update/fullname/:name"
 		},
