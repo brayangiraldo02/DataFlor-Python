@@ -13,6 +13,7 @@ from models.users import User
 
 # Importing routers
 from routers.flowershop import flowerShop_router
+from routers.user import user_router
 
 app = FastAPI()
 
@@ -24,6 +25,7 @@ app.add_middleware(ErrorHandler)
 
 # Routers
 app.include_router(flowerShop_router)
+app.include_router(user_router)
 
 # Creating tables
 Base.metadata.create_all(bind=engine)
@@ -85,4 +87,3 @@ def message():
 		}
 	}
 )
-
