@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field, constr
+from typing import Optional
 from enum import Enum
 
 class UserRole(str, Enum):
@@ -10,7 +11,7 @@ class UserState(str, Enum):
     Activate = "Activate"
     Inactive = "Inactive"
 
-class UserBase(BaseModel):
+class User(BaseModel):
     username: constr(min_length=1, max_length=50)
     password: constr(min_length=1, max_length=255)
     fullname: constr(min_length=1, max_length=255)
@@ -18,9 +19,12 @@ class UserBase(BaseModel):
     role: UserRole
     idflowershops: int = None
 
-class UserCreate(UserBase):
-    state: UserState = UserState.Activate
+class UserUpdate(BaseModel):
+    username: constr(min_length=1, max_length=50)
+    phone: constr(min_length=1, max_length=15)
+    state: Optional[UserState] = None
 
-class User(UserBase):
-    userid: int
-    state: UserState
+class UserLogin(BaseModel):
+    username: constr(min_length=1, max_length=50)
+    password: constr(min_length=1, max_length=255)
+    state: Optional[UserState] = None

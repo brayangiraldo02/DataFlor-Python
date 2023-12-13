@@ -21,7 +21,7 @@ def get_flowerShops() -> List[FlowerShop]:
 
 # Get flower shop by id
 @flowerShop_router.get("/flower-shops/{idflowershops}", tags=["FlowerShops"], response_model=FlowerShop, status_code=200)
-def get_flowerShop(idflowershops:int = Path(ge=1, le=2000)):
+def get_flowerShop(idflowershops:int = Path(ge=0, le=2000)):
   db = Session()
   result = db.query(FlowerShopModel).filter(FlowerShopModel.idflowershops == idflowershops).first()
   response = JSONResponse(content=jsonable_encoder(result), status_code=200)
