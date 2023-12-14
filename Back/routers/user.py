@@ -80,16 +80,47 @@ def create_user(user: User):
   db.commit()
   return JSONResponse(status_code=201, content={"message": "User created successfully."})
 
-@user_router.post("/login", tags=["Users"], response_model=dict, status_code=200)
+@user_router.post("/login", tags=["Users"], status_code=200)
 def login_user(userlogin: UserLogin):
+  username = userlogin.username
+  password = userlogin.password
+  state = "Activate"
+  try:
+    db = Session()
+    user = db.query(UserModel).filter(UserModel.username == username).first()
+    if not user:
+      return JSONResponse(content={"message": "Incorrect user"}, status_code=404)
+    token = create_token(data={'user':jsonable_encoder(user)})
+    res = JSONResponse(content={"token": token}, status_code=200)
+    if password != user.password :
+      res = JSONResponse(content={"message": "Incorrect password"}, status_code=400)
+    if state != user.state:
+      res = JSONResponse(content={"message": "User is inactive"}, status_code=400)
+    return res
+  except Exception as e:
+    print("Error: ", e)
+    return JSONResponse(content={"message": "Internal error"}, status_code=500)
+
+@user_router.put("/users/update/id/{userid}", tags=["Users"], status_code=200)
+def update_user(userid:int, user: UserUpdate):
   db = Session()
-  result = db.query(UserModel).filter(UserModel.username == userlogin.username).first()
-  token = create_token(data=result.model_dump())
-  response = JSONResponse(content=jsonable_encoder(token), status_code=200)
+  result = db.query(UserModel).filter(UserModel.userid == userid).first()
   if not result:
-    response = JSONResponse(content={"message": "No user found with that username"}, status_code=404)
-  if result.password != userlogin.password:
-    response = JSONResponse(content={"message": "Incorrect password"}, status_code=400)
-  if result.state != "Activate":
-    response = JSONResponse(content={"message": "User is inactive"}, status_code=400)
-  return response
+    return JSONResponse(status_code=404, content={"message": "User not found"})
+  result.username = user.username
+  result.phone = user.phone
+  result.state = user.state
+  db.commit()
+  return JSONResponse(status_code=200, content={"message": "User updated successfully"})
+
+@user_router.put("/users/update/username/{username}", tags=["Users"], status_code=200)
+def update_user(username: str, user: UserUpdate):
+  db = Session()
+  result = db.query(UserModel).filter(UserModel.username == username).first()
+  if not result:
+    return JSONResponse(status_code=404, content={"message": "User not found"})
+  result.username = user.username
+  result.phone = user.phone
+  result.state = user.state
+  db.commit()
+  return JSONResponse(status_code=200, content={"message": "User updated successfully"})

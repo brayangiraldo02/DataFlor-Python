@@ -79,13 +79,16 @@ def create_flowerShop(flowerShop: FlowerShop):
   return JSONResponse(status_code=201, content={"message": "Flower shop created"})
 
 # Update flower shop by id
-@flowerShop_router.put("/flower-shops/update/id/{idflowershops}", tags=["FlowerShops"], response_model=dict, status_code=200)
-def update_flowerShopById(idflowershops:int = Path(ge=1, le=2000), flowerShop: FlowerShopUpdate = Depends()):
+@flowerShop_router.put("/flower-shops/update/id/{idflowershops}", tags=["FlowerShops"], status_code=200)
+def update_flowerShopById(idflowershops:int, flowerShop: FlowerShopUpdate):
   db = Session()
   result = db.query(FlowerShopModel).filter(FlowerShopModel.idflowershops == idflowershops).first()
   if not result:
     return JSONResponse(status_code=404, content={"message": "No flower shop found with that id"})
-  db.query(FlowerShopModel).filter(FlowerShopModel.idflowershops == idflowershops).update(flowerShop.model_dump())
+  result.fullname = flowerShop.fullname
+  result.address = flowerShop.address
+  result.phone = flowerShop.phone
+  result.state = flowerShop.state
   db.commit()
   return JSONResponse(status_code=200, content={"message": "Flower shop updated"})
 

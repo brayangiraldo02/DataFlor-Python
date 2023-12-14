@@ -27,4 +27,4 @@ class UserUpdate(BaseModel):
 class UserLogin(BaseModel):
     username: constr(min_length=1, max_length=50)
     password: constr(min_length=1, max_length=255)
-    state: Optional[UserState] = None
+    # state: Optional[UserState] = None
