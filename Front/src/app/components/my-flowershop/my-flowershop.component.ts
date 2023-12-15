@@ -33,7 +33,7 @@ export class MyFlowershopComponent implements OnInit{
   }
 
   getFlowershop(): void {
-    this.http.get(`http://localhost:5000/flower-shops/${this.flowershopId}}`).subscribe((data: any) => {
+    this.http.get(`http://localhost:5000/flower-shops/${this.flowershopId}`).subscribe((data: any) => {
       this.flowershopData = data;
     }, error => {
       console.log(error);

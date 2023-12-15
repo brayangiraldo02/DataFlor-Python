@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from config.database import engine, Base
 
 from middlewares.error_handler import ErrorHandler
+from fastapi.middleware.cors import CORSMiddleware
 
 # Importing models
 from models.flowershops import FlowerShop
@@ -13,6 +14,7 @@ from models.users import User
 
 # Importing routers
 from routers.flowershop import flowerShop_router
+from routers.user import user_router
 
 app = FastAPI()
 
@@ -21,9 +23,17 @@ app.version = "0.1.0"
 
 # Middlewares
 app.add_middleware(ErrorHandler)
+app.add_middleware(
+    CORSMiddleware, 
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Routers
 app.include_router(flowerShop_router)
+app.include_router(user_router)
 
 # Creating tables
 Base.metadata.create_all(bind=engine)
@@ -85,4 +95,3 @@ def message():
 		}
 	}
 )
-
