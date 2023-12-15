@@ -15,11 +15,12 @@ from models.users import User
 # Importing routers
 from routers.flowershop import flowerShop_router
 from routers.user import user_router
+from routers.providers import providers_router
 
 app = FastAPI()
 
 app.title = "My flower shop inventory application."
-app.version = "0.1.0"
+app.version = "0.3.0"
 
 # Middlewares
 app.add_middleware(ErrorHandler)
@@ -34,6 +35,7 @@ app.add_middleware(
 # Routers
 app.include_router(flowerShop_router)
 app.include_router(user_router)
+app.include_router(providers_router)
 
 # Creating tables
 Base.metadata.create_all(bind=engine)
@@ -54,7 +56,7 @@ def message():
 			"updateFlowerShopById": "PUT /flower-shops/update/id/:id",
 			"updateFlowerShopByFullname": "PUT /flower-shops/update/fullname/:name"
 		},
-		"users": {
+		"users (LISTO)": {
 			"allUsers": "GET /users",
 			"userById": "GET /users/:id",
 			"userByUsername": "GET /users/username/:name",
@@ -68,7 +70,7 @@ def message():
 			"updateUserById": "PUT /users/update/id/:id",
 			"updateUserByUsername": "PUT /users/update/username/:name"
 		},
-		"providers": {
+		"providers (LISTO)": {
 			"allProviders": "GET /providers",
 			"providerById": "GET /providers/:id",
 			"providerByName": "GET /providers/name/:name",
