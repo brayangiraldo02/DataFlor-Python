@@ -1,7 +1,18 @@
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the error handler middleware.
+  It is used to handle the exceptions in the application.
+'''
+#Importing libraries
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
 
+#Creating the ErrorHandler class
 class ErrorHandler(BaseHTTPMiddleware):
 
   def __init__(self, app: FastAPI):

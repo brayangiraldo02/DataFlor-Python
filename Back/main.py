@@ -1,7 +1,18 @@
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+	This file contains the main file.
+	It is used to run the application.
+'''
+# Importing libraries
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from config.database import engine, Base
 
+# Importing middlewares
 from middlewares.error_handler import ErrorHandler
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,9 +24,9 @@ from models.inventory import Inventory
 from models.users import User
 
 # Importing routers
-from routers.flowershop import flowerShop_router
-from routers.user import user_router
-from routers.providers import providers_router
+from routes.flowershop import flowerShop_router
+from routes.user import user_router
+from routes.providers import providers_router
 
 app = FastAPI()
 

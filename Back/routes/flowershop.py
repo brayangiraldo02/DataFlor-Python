@@ -1,4 +1,13 @@
-# FlowerShop routes
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the FlowerShop routes.
+'''
+
+# Import libraries and functions
 from fastapi import APIRouter, Depends, Path, Query
 from fastapi.responses import JSONResponse
 from typing import List
@@ -7,6 +16,7 @@ from models.flowershops import FlowerShop as FlowerShopModel
 from fastapi.encoders import jsonable_encoder
 from schemas.flowershops import FlowerShop, FlowerShopUpdate
 
+# Create the FlowerShop router
 flowerShop_router = APIRouter()
 
 # Get all flower shops

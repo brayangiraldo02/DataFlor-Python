@@ -1,6 +1,17 @@
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the User model.
+  It is used to map the User model with the database table.
+'''
+# Import libraries and functions
 from config.database import Base 
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey
 
+# Create the User class model
 class User(Base):
   __tablename__ = "users"
 
