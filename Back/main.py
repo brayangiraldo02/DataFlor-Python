@@ -70,7 +70,7 @@ def message():
 			"updateUserById": "PUT /users/update/id/:id",
 			"updateUserByUsername": "PUT /users/update/username/:name"
 		},
-		"providers": {
+		"providers (LISTO)": {
 			"allProviders": "GET /providers",
 			"providerById": "GET /providers/:id",
 			"providerByName": "GET /providers/name/:name",
