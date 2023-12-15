@@ -1,6 +1,17 @@
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the Inventory model.
+  It is used to map the Inventory model with the database table.
+'''
+# Import libraries and functions
 from config.database import Base 
 from sqlalchemy import Column, Integer, ForeignKey, CheckConstraint, Enum
 
+# Create the Inventory class model
 class Inventory(Base):
   __tablename__ = "inventory"
 

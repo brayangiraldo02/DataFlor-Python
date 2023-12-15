@@ -1,4 +1,12 @@
-# FlowerShop routes
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the providers routes.
+'''
+# Import libraries and functions
 from fastapi import APIRouter, Depends, Path, Query
 from fastapi.responses import JSONResponse
 from typing import List
@@ -7,6 +15,7 @@ from models.providers import Provider as ProvidersModel
 from fastapi.encoders import jsonable_encoder
 from schemas.providers import Providers, ProvidersUpdate
 
+# Create the providers router
 providers_router = APIRouter()
 
 # Get all providers

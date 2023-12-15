@@ -1,4 +1,13 @@
-# Schema for Providers
+'''
+  Developed by Brayan Cataño Giraldo.
+  E-mail: b.catano@utp.edu.co
+'''
+
+'''
+  This file contains the Providers schema.
+  It is used to validate the Providers data.
+'''
+# Importing libraries
 from pydantic import BaseModel, Field
 from typing import Optional
 from enum import Enum
