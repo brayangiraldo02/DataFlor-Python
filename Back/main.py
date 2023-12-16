@@ -94,7 +94,7 @@ def message():
 			"updateProviderById": "PUT /providers/update/id/:id",
 			"updateProviderByFullname": "PUT /providers/update/fullname/:name"
 		},
-		"products": {
+		"products (LISTO)": {
 			"allProducts": "GET /products",
 			"productById": "GET /products/:id",
 			"productByName": "GET /products/name/:name",

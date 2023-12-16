@@ -53,3 +53,18 @@ def create_product(product: ProductCreate):
   db.commit()
   response = JSONResponse(content={"message": "Product created successfully"}, status_code=201)
   return response
+
+@products_router.put("/products/update/id/{productid}", tags=["Products"], response_model=dict, status_code=200)
+def update_product(productid:int, product:ProductUpdate):
+  db = Session()
+  result = db.query(ProductsModel).filter(ProductsModel.productid == productid).first()
+  if result:
+    result.productname = product.productname
+    result.description = product.description
+    result.price = product.price
+    result.state = product.state
+    db.commit()
+    response = JSONResponse(content={"message": "Product updated successfully"}, status_code=200)
+  else:
+    response = JSONResponse(content={"message": "No product found with that id"}, status_code=404)
+  return response
