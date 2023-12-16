@@ -12,6 +12,7 @@ export class MyInventoryComponent implements OnInit {
   inventoryForm!: FormGroup;
   inventorys: any[] = [];
   providers: any[] = [];
+  idfs: any;
   editingInventory: any;
 
   public isLoggedInOwner: boolean = false;
@@ -19,7 +20,6 @@ export class MyInventoryComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getInventory();
 
     this.http.get<any[]>('http://localhost:5000/providers').subscribe((data: any[]) => {
       this.providers = data;
@@ -32,7 +32,9 @@ export class MyInventoryComponent implements OnInit {
       if (tokenDesencripted.user.role === 'Dueño') {
         this.isLoggedInOwner = true;
       }
+      this.idfs = tokenDesencripted.user.idflowershops;
     }
+    this.getInventory();
   }
 
   editInventory(inventory: any) {
@@ -41,7 +43,6 @@ export class MyInventoryComponent implements OnInit {
       this.editingInventory = { ...inventory };
       this.inventoryForm = this.formBuilder.group({
         quantity: [this.editingInventory.quantity, [Validators.required, Validators.pattern('^[0-9]*$')]],
-        providerid: [this.editingInventory.providerid, Validators.required],
         state: [this.editingInventory.state, Validators.required],
       });
     });
@@ -70,7 +71,7 @@ export class MyInventoryComponent implements OnInit {
   }
 
   getInventory() {
-    this.http.get('http://localhost:5000/inventory')
+    this.http.get(`http://localhost:5000/inventory/${this.idfs}`)
       .subscribe((data: any) => {
         this.inventorys = data.sort((a: any, b: any) => b.state - a.state);
       });
