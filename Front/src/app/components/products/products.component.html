@@ -19,7 +19,7 @@
         <td>{{ product.productname }}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
-        <td>{{ product.state == 'Available' ? 'Activo' : 'Inactivo' }}</td>
+        <td>{{ product.state == 'Activate' ? 'Activo' : 'Inactivo' }}</td>
         <td>
           <button (click)="editProducts(product)">Editar</button>
         </td>
@@ -57,8 +57,8 @@
       <div class="form-group">
         <label for="state">Estado:</label>
         <select id="state" formControlName="state">
-          <option value="Available">Activo</option>
-          <option value="Unavailable">Inactivo</option>
+          <option value="Activate">Activo</option>
+          <option value="Inactive">Inactivo</option>
         </select>
         <div *ngIf="productsForm.get('state')?.hasError('required')">
           Estado es obligatorio.

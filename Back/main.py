@@ -27,6 +27,7 @@ from models.users import User
 from routes.flowershop import flowerShop_router
 from routes.user import user_router
 from routes.providers import providers_router
+from routes.products import products_router
 
 app = FastAPI()
 
@@ -47,6 +48,7 @@ app.add_middleware(
 app.include_router(flowerShop_router)
 app.include_router(user_router)
 app.include_router(providers_router)
+app.include_router(products_router)
 
 # Creating tables
 Base.metadata.create_all(bind=engine)
@@ -92,7 +94,7 @@ def message():
 			"updateProviderById": "PUT /providers/update/id/:id",
 			"updateProviderByFullname": "PUT /providers/update/fullname/:name"
 		},
-		"products": {
+		"products (LISTO)": {
 			"allProducts": "GET /products",
 			"productById": "GET /products/:id",
 			"productByName": "GET /products/name/:name",

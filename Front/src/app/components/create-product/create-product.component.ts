@@ -16,6 +16,7 @@ export class CreateProductComponent {
     this.productForm = this.formBuilder.group({
       productname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      description: ['', [Validators.required]],
     });
   }
 
@@ -31,7 +32,7 @@ export class CreateProductComponent {
           },
           (error) => {
             // Manejar error del servidor.
-            alert('Error al crear el proveedor');
+            alert('Error al crear el producto');
           }
         );
     } else {

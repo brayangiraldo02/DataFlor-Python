@@ -11,18 +11,28 @@
 from pydantic import BaseModel, Field, constr
 from enum import Enum
 
+# Product State
 class ProductState(str, Enum):
-  Available = "Available"
-  Unavailable = "Unavailable"
+  Activate = "Activate"
+  Inactive = "Inactive"
 
-class ProductBase(BaseModel):
-  productname: constr(min_length=2, max_length=255)
-  description: str = None  # Puedes ajustar el manejo de valores nulos según tus necesidades
-  price: float = Field(..., gt=0)
-
-class ProductCreate(ProductBase):
-  state: ProductState = ProductState.Available
-
-class Product(ProductBase):
+# Product Base
+class Product(BaseModel):
   productid: int
+  productname: constr(min_length=1, max_length=255)
+  description: constr(min_length=1, max_length=255)
+  price: float
   state: ProductState
+
+# Product Update
+class ProductUpdate(BaseModel):
+  productname: constr(min_length=1, max_length=255)
+  description: constr(min_length=1, max_length=255)
+  price: float
+  state: ProductState
+
+# Product Create
+class ProductCreate(BaseModel):
+  productname: constr(min_length=1, max_length=255)
+  description: constr(min_length=1, max_length=255)
+  price: float

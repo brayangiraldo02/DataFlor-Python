@@ -19,4 +19,4 @@ class Product(Base):
   productname = Column(String(255), nullable=False)
   description = Column(Text)
   price = Column(Float, nullable=False)
-  state = Column(Enum('Available', 'Unavailable'), default='Available', nullable=False)
+  state = Column(Enum('Activate', 'Inactive'), default='Activate', nullable=False)

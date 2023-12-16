@@ -25,6 +25,9 @@
     <div>
       <label for="description">Descripción:</label>
       <input id="description" formControlName="description" />
+      <div *ngIf="productForm.get('description')?.hasError('required')">
+        Descripción obligatorio.
+      </div>
     </div>
     <button type="submit">Crear producto</button>
     <button routerLink="/products">Volver</button>
