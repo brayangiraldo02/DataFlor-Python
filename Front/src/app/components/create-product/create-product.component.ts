@@ -27,7 +27,6 @@ export class CreateProductComponent {
         .subscribe(
           (data: any) => {
             // Manejar respuesta del servidor si es exitosa.
-            alert('Producto creado exitosamente');
             this.router.navigate(['/products']);
           },
           (error) => {

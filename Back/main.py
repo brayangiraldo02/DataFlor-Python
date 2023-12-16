@@ -28,11 +28,12 @@ from routes.flowershop import flowerShop_router
 from routes.user import user_router
 from routes.providers import providers_router
 from routes.products import products_router
+from routes.inventory import inventory_router
 
 app = FastAPI()
 
 app.title = "My flower shop inventory application."
-app.version = "0.3.0"
+app.version = "0.4.0"
 
 # Middlewares
 app.add_middleware(ErrorHandler)
@@ -49,6 +50,7 @@ app.include_router(flowerShop_router)
 app.include_router(user_router)
 app.include_router(providers_router)
 app.include_router(products_router)
+app.include_router(inventory_router)
 
 # Creating tables
 Base.metadata.create_all(bind=engine)
@@ -58,7 +60,7 @@ Base.metadata.create_all(bind=engine)
 def message():
 	return JSONResponse(content={ 
 		"Welcome_message": "Welcome to the DataFlor backend!",
-		"flowerShops (LISTO)": {
+		"flowerShops": {
 			"allFlowerShops": "GET /flower-shops",
 			"flowerShopById": "GET /flower-shops/:id",
 			"flowerShopByName": "GET /flower-shops/name/:name",
@@ -69,7 +71,7 @@ def message():
 			"updateFlowerShopById": "PUT /flower-shops/update/id/:id",
 			"updateFlowerShopByFullname": "PUT /flower-shops/update/fullname/:name"
 		},
-		"users (LISTO)": {
+		"users": {
 			"allUsers": "GET /users",
 			"userById": "GET /users/:id",
 			"userByUsername": "GET /users/username/:name",
@@ -83,7 +85,7 @@ def message():
 			"updateUserById": "PUT /users/update/id/:id",
 			"updateUserByUsername": "PUT /users/update/username/:name"
 		},
-		"providers (LISTO)": {
+		"providers": {
 			"allProviders": "GET /providers",
 			"providerById": "GET /providers/:id",
 			"providerByName": "GET /providers/name/:name",
@@ -94,7 +96,7 @@ def message():
 			"updateProviderById": "PUT /providers/update/id/:id",
 			"updateProviderByFullname": "PUT /providers/update/fullname/:name"
 		},
-		"products (LISTO)": {
+		"products": {
 			"allProducts": "GET /products",
 			"productById": "GET /products/:id",
 			"productByName": "GET /products/name/:name",
