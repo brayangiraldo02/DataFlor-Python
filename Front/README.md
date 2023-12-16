@@ -1,5 +1,5 @@
-<Developed: by Brayan Cataño Giraldo.
-<E-mail: b.catano@utp.edu.co
+* Developed: by Brayan Cataño Giraldo.
+* E-mail: b.catano@utp.edu.co
 
 # Front
 
