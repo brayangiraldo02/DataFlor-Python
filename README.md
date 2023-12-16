@@ -2,6 +2,6 @@
 
 Full-stack application developed in javascript with node.js and angular in frontend and python with fastapi and sqlite in backend developed by Brayan Cataño Giraldo (b.catano@utp.edu.co)
 
-## INSTALLATION AND TESTING INSTRUCTIONS
+## INSTALLATION AND SETUP INSTRUCTIONS
 
-Installation and project startup instructions are inside each folder.
+The installation and startup instructions of the project are inside each folder.
